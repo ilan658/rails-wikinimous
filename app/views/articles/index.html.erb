@@ -1,0 +1,15 @@
+<!-- Navbar avec "Wikinimous" comme lien vers l'index et un bouton "New Article" -->
+<div class="navbar bg-light p-3 d-flex justify-content-between align-items-center mb-4">
+  <%= link_to "Wikinimous", articles_path, class: "navbar-brand fs-4 mb-0 text-decoration-none text-muted" %>
+  <%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
+</div>
+
+<!-- Liste des articles -->
+<ul class="list-unstyled text-center">
+  <% @articles.each do |article| %>
+    <li class="mb-4">
+      <h2><%= link_to article.title, article_path(article), class: "text-primary fw-bold text-decoration-none" %></h2>
+      <p class="text-muted"><%= truncate(article.content, length: 100) %></p>
+    </li>
+  <% end %>
+</ul>

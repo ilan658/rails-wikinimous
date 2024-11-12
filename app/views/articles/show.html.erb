@@ -1,0 +1,27 @@
+<!-- Navbar avec "Wikinimous" comme lien vers l'index et un bouton "New Article" -->
+<div class="navbar bg-light p-3 d-flex justify-content-between align-items-center mb-4">
+  <%= link_to "Wikinimous", articles_path, class: "navbar-brand fs-4 mb-0 text-decoration-none text-muted" %>
+  <%= link_to "New Article", new_article_path, class: "btn btn-primary" %>
+</div>
+
+<!-- Titre de l'article centré avec les icônes à droite -->
+<div class="d-flex justify-content-center align-items-center mb-3">
+  <h1 class="mb-0 text-center"><%= @article.title %></h1>
+  <div class="ms-3">
+    <%= link_to edit_article_path(@article), class: "text-decoration-none me-2", title: "Edit" do %>
+      <i class="bi bi-pencil text-primary fs-4"></i>
+    <% end %>
+    <%= form_with(model: @article, method: :delete, data: { confirm: "Are you sure?" }, class: "d-inline") do %>
+      <button type="submit" class="btn btn-link text-danger p-0" title="Delete">
+        <i class="bi bi-trash fs-4"></i>
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<!-- Contenu de l'article centré -->
+<div class="text-center">
+  <p class="text-muted"><%= @article.content %></p>
+</div>
